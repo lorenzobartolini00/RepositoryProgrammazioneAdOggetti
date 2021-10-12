@@ -16,6 +16,7 @@
 # COMMIT E PUSH
  I commit non sono altro che una versione del progetto a cui stiamo lavorando. Un commit da solo non basta a modificare il progetto su git, poichè il commit è una versione LOCALE 
  del progetto. Per rendere effettive le modifiche contenute nel commit occorre eseguire un "PUSH" del commit.
+ 
  Come si esegue un commit in Eclipse? Dopo aver eseguito una qualsiasi modifica al progetto, cliccare con il tasto destro sulla cartella del progetto su cui si vuole eseguire un commit
  e selezionare Team > Commit. Nel tab Git Staging aperto automaticamente in basso, bisogna trascinare i file modificati che
  compaiono nell'elenco "Unstaged Changes" nel riquadro "Stage Changed". In questo modo abbiamo aggiunto i file modificati al commit. Dopo aver scritto una breve descrizione di ciò che
@@ -32,6 +33,9 @@
 # PULL
  Quando viene eseguito un commit e poi un push da parte di un utente, tutti gli utenti che vogliono avere accesso alle modifiche effettuate
  devono eseguire un altro comando, detto "PULL", il quale non fa altro che scaricare le modifiche nella propria copia locale.
+ 
+ Come si esegue un Pull?
+ Il modo più semplice per eseguire un pull è da GitHubDesktop. Infatti appena saranno rilevate delle modifiche( aggiornare la pagina cliccando su "fetch origin" ), comparirà un pulsante con scritto "Pull origin". Cliccando lì le modifiche verranno scaricate. 
 
 #MERGE
 
