@@ -37,7 +37,7 @@
  Come si esegue un Pull?
  Il modo più semplice per eseguire un pull è da GitHubDesktop. Infatti appena saranno rilevate delle modifiche( aggiornare la pagina cliccando su "fetch origin" ), comparirà un pulsante con scritto "Pull origin". Cliccando lì le modifiche verranno scaricate. 
 
-#MERGE
+# MERGE
 
-#REBASE
+# REBASE
 
