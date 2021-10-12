@@ -1,13 +1,8 @@
 package es2;
 
-
-
 import java.util.Scanner;
 
-
-
 public class Es2 {
-
 
 
 	public static void main(String[] args) {
@@ -34,7 +29,7 @@ public class Es2 {
 		}
 		return occorrenze;
 	}
-
-
+	
+	//prova di modifica per commit
 
 }
