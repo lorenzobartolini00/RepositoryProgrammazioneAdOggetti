@@ -13,6 +13,7 @@ public class Es2 {
 		String frase = input.nextLine();
 		System.out.println("Inserire parola: ");
 		String parola = input.next();
+		
 
 		System.out.println(contaOccorrenze(frase, parola));
 		input.close();
