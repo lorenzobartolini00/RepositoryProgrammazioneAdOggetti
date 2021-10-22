@@ -1,11 +1,13 @@
 package GestioneBanca;
 
+import GestioneBanca.ContoCorrente;
+
 public class Utente {
 	private int idUtente;
 	private String nomeUtente;
 	private String password;
 	
-	private static int idUltimo = 1000;
+	public static int idUltimo = 1000;
 	
 	public Utente(String nomeUtente, String password)
 	{
@@ -43,5 +45,16 @@ public class Utente {
 		return result;
 	}
 	
+	public String getNomeUtente() {
+		return nomeUtente;
+		}
+	
+	public String getPassword() {
+		return password;
+		}
+	
+	public int getId() {
+		return idUtente;
+		}
 	
 }

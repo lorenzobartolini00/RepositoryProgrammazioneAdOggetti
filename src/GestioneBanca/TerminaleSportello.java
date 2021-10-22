@@ -1,0 +1,36 @@
+package GestioneBanca;
+
+import java.util.*;
+import GestioneBanca.Utente;
+
+public class TerminaleSportello {
+	
+	private int  idUtente;
+	Scanner input= new Scanner(System.in);
+	Utente[] listaUtenti;
+	
+	public TerminaleSportello(Utente[] utenti) {
+		listaUtenti=utenti;
+
+	}
+	
+	public boolean login() {
+		boolean result = false;
+		System.out.println("Inserisci Username");
+		String name=input.nextLine();
+		System.out.println("Inserisci Username");
+		String password=input.nextLine();
+		
+		for(int i=0; i<=Utente.idUltimo; i++) {
+			if (name.equals(listaUtenti[i].getNomeUtente()) && password.equals(listaUtenti[i].getPassword())) {
+				result  = true;
+				idUtente = listaUtenti[i].getId();
+			}
+				
+		}
+		
+		return result;
+		
+		
+	}
+}
