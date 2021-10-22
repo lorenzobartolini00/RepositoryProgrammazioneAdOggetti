@@ -21,7 +21,7 @@ public class TerminaleSportello {
 		System.out.println("Inserisci Username");
 		String password=input.nextLine();
 		
-		for(int i=0; i<=Utente.idUltimo; i++) {
+		for(int i=0; i<=listaUtenti.length; i++) {
 			if (name.equals(listaUtenti[i].getNomeUtente()) && password.equals(listaUtenti[i].getPassword())) {
 				result  = true;
 				idUtente = listaUtenti[i].getId();

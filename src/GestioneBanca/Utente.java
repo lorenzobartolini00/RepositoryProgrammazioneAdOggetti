@@ -1,7 +1,5 @@
 package GestioneBanca;
 
-import GestioneBanca.ContoCorrente;
-
 public class Utente {
 	private int idUtente;
 	private String nomeUtente;
@@ -45,16 +43,19 @@ public class Utente {
 		return result;
 	}
 	
-	public String getNomeUtente() {
+	public String getNomeUtente() 
+	{
 		return nomeUtente;
-		}
+	}
 	
-	public String getPassword() {
+	public String getPassword() 
+	{
 		return password;
-		}
+	}
 	
-	public int getId() {
+	public int getId() 
+	{
 		return idUtente;
-		}
+	}
 	
 }
