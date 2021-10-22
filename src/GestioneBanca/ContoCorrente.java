@@ -12,9 +12,7 @@ public class ContoCorrente {
 		name=nome;
 		saldo=saldoIniziale;
 		numeroConto=++numeroUltimoConto;
-		
-	}
-	
+		}
 	
 	public void versa(double somma) {
 		saldo+=somma;
