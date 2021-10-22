@@ -7,7 +7,7 @@ public class Utente {
 	private String nomeUtente;
 	private String password;
 	
-	public static int idUltimo = 1000;
+	public static int idUltimo = 0;
 	
 	public Utente(String nomeUtente, String password)
 	{
