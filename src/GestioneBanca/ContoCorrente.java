@@ -32,8 +32,8 @@ public class ContoCorrente {
 	}
 	
 	public void maturaInteressi() {
-		if( tipoConto == "family" )saldo=saldo*tassoFamily;
-		else if( tipoConto == "business" ) saldo=saldo*tassoBusiness;
+		if( tipoConto == "family" )saldo=saldo*(1+tassoFamily);
+		else if( tipoConto == "business" ) saldo=saldo*(1+tassoBusiness);
 	}
 	
 	public double ottieniSaldo() {

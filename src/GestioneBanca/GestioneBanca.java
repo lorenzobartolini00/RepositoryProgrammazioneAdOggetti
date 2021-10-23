@@ -65,14 +65,12 @@ public class GestioneBanca {
 					Dictionary.stampaParoleConsentite("listaOperazioniConto");
 					listaOperazioniConto=input.nextLine();
 				}while(!Dictionary.verificaInserimento(listaOperazioniConto, "listaOperazioniConto"));
-			
-				switch(listaOperazioniConto) 
-				{
-				// Apri conto
-				case "Apri conto" : 
-				{
-					if( banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()])==null )
+				
+				if( banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()])==null )
+				{					
+					if(listaOperazioniConto.equals("Apri conto")) 
 					{
+						// Apri conto
 						// Ogni utente può aprire solo un conto
 						String tipoConto;
 						do
@@ -92,16 +90,27 @@ public class GestioneBanca {
 						// Dopo aver creato il nuovo conto con i parametri inseriti dall'utente, associo l'utente al
 						// suo conto corrente attraverso la mappa "banca". In questa implementazione ad ogni utente 
 						// può essere associato un solo conto corrente.
-						banca.put(TerminaleSportello.getUserList()[terminale.getActiveUserId()] , cc);
+					banca.put(TerminaleSportello.getUserList()[terminale.getActiveUserId()] , cc);
 					}
-					else System.out.println("Conto già aperto! Impossibile aggiungere più conti corrente ad uno stesso utente");
+					else
+					{
+						System.out.println("Nessun conto aperto! Per poter fare qualsiasi cosa devi prima aprire un conto");
+					}
 				}
-				break;
 				
-				// Versa una somma
-				case "Versa" :
+				else if(banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()])!=null)
 				{
-					if( banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()])!=null )
+					switch(listaOperazioniConto) 
+					{
+					
+					case "Apri conto":
+					{
+						System.out.println("...");
+						//Aggiungere conto corrente
+					}
+					
+					// Versa una somma
+					case "Versa" :
 					{
 						int versamento;
 						do
@@ -112,14 +121,10 @@ public class GestioneBanca {
 						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]);
 						cc.versa(versamento);
 					}
-					else System.out.println("Nessun conto aperto! Per poter fare qualsiasi cosa devi prima aprire un conto");
-				}
-				break;
+					break;
 			
-				// Preleva una somma
-				case "Preleva" :
-				{
-					if( banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()])!=null )
+					// Preleva una somma
+					case "Preleva" :
 					{
 						int prelievo;
 						do
@@ -130,29 +135,23 @@ public class GestioneBanca {
 						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]);
 						cc.preleva(prelievo);
 					}
-						else System.out.println("Nessun conto aperto! Per poter fare qualsiasi cosa devi prima aprire un conto");
-				}
-				break;
+					break;
 				
-				// Stampa saldo
-				case "Saldo" :
-				{
-					if( banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()])!=null )
+					// Stampa saldo
+					case "Saldo" :
 					{
 						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]);
 						System.out.println("Il saldo è di " + cc.ottieniSaldo() + " euro");
 					}
-					else System.out.println("Nessun conto aperto! Per poter fare qualsiasi cosa devi prima aprire un conto");
-				}
-				break;
+					break;
 				
-				// Esci dal terminale
-				case "Logout" :
-				{
-					login = false;
-				}
-				break;
-				
+					// Esci dal terminale
+					case "Logout" :
+					{
+						login = false;
+					}
+					break;
+					}
 				}
 			}
 		}
