@@ -22,7 +22,7 @@ public class TerminaleSportello {
 		String password=input.nextLine();
 		
 		for(int i=0; i<=listaUtenti.length; i++) {
-			if (name.equals(listaUtenti[i].getNomeUtente()) && password.equals(listaUtenti[i].getPassword())) {
+			if (listaUtenti[i].check(name, password)) {
 				result  = true;
 				idUtente = listaUtenti[i].getId();
 			}

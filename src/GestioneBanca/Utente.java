@@ -1,12 +1,15 @@
 package GestioneBanca;
 
 public class Utente {
+	// Attributi
 	private int idUtente;
 	private String nomeUtente;
 	private String password;
 	
+	// Attributi statici
 	public static int idUltimo = 0;
 	
+	// Costruttore: inizializza nomeUtente e password
 	public Utente(String nomeUtente, String password)
 	{
 		idUltimo++;
@@ -15,47 +18,35 @@ public class Utente {
 		this.password = password;
 	}
 	
-	public String getUsername(String password)
+	// Getter e setter degli attributi privati
+	public String getNomeUtente() {return nomeUtente;}
+	public String getPassword() {return password;}
+	public int getId() {return idUtente;}
+	
+	// Metodi
+	
+	// Controlla se il nome utente e la password passati corrispondono a quelli dell'utente
+	public boolean check(String nomeUtente, String password)	
 	{
-		return nomeUtente;
+		boolean result = false;
+		
+		if(this.nomeUtente.equals(nomeUtente) && this.password.equals(password)) result = true;
+		
+		return result;
 	}
 	
-	public boolean controlla(String nomeUtente, String password)
-	{
-		if(this.nomeUtente.equals(nomeUtente) && this.password.equals(password)) return true;
-		else return false;
-	}
-	
+	// Cambia la password memorizzata se la oldPassword coincide con l'ultima password memorizzata 
 	public boolean changePassword(String oldPassword, String newPassword)
 	{
-		boolean result;
+		boolean result = false;
 		
 		if(oldPassword.equals(password))
 		{
 			password = newPassword;
 			result = true;
 		}
-		else
-		{
-			result = false;
-		}
 		
 		return result;
-	}
-	
-	public String getNomeUtente() 
-	{
-		return nomeUtente;
-	}
-	
-	public String getPassword() 
-	{
-		return password;
-	}
-	
-	public int getId() 
-	{
-		return idUtente;
 	}
 	
 }
