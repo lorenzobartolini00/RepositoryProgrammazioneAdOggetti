@@ -5,7 +5,7 @@ import GestioneBanca.Utente;
 
 public class TerminaleSportello {
 	// Attributi
-	private int  idUtente;
+	private int  activeUserId;
 	Scanner input= new Scanner(System.in);
 	private static Utente[] listaUtenti;
 	
@@ -13,10 +13,10 @@ public class TerminaleSportello {
 	public TerminaleSportello(Utente[] utenti) 
 	{
 		listaUtenti=utenti;
-		listaUtenti[0] = new Utente("placeholder", "placeholder");
 	}
 	
-	public static Utente[] getListaUtenti() { return listaUtenti; }
+	public static Utente[] getUserList() { return listaUtenti; }
+	public int getActiveUserId() { return activeUserId; } 
 	
 	// Metodi
 	
@@ -40,7 +40,7 @@ public class TerminaleSportello {
 				if (listaUtenti[i].check(name, password)) 	// Richiama il metodo check() presente nella classe Utente
 				{
 					result  = true;
-					idUtente = listaUtenti[i].getId();		// Una volta che l'utente è stato trovato, viene salvato il suo id nel terminale
+					activeUserId = listaUtenti[i].getId();		// Una volta che l'utente è stato trovato, viene salvato il suo id nel terminale
 				}
 			}	
 		}

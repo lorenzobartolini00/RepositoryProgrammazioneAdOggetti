@@ -17,12 +17,16 @@ public class Dictionary {
 		ArrayList<String> listaOperazioniUtente = new ArrayList<>();
 		listaOperazioniUtente.add("Login");
 		listaOperazioniUtente.add("Sign in");
+		listaOperazioniUtente.add("Exit");
 		ArrayList<String> listaOperazioniConto = new ArrayList<>();
 		listaOperazioniConto.add("Apri conto");
 		listaOperazioniConto.add("Versa");
 		listaOperazioniConto.add("Preleva");
+		listaOperazioniConto.add("Saldo");
+		listaOperazioniConto.add("Numero conto corrente");
 		listaOperazioniConto.add("Matura interessi");
 		listaOperazioniConto.add("Cambia tasso di interesse");
+		listaOperazioniConto.add("Logout");
 		
 		// Associo a ciascuna key il proprio value
 		paroleConsentite.put("tipoConto", tipoConto);

@@ -4,7 +4,6 @@ public class ContoCorrente {
 	
 	private String tipoConto;
 	private double saldo;
-	private double tasso;
 	private int numeroConto;
 	private double tassoFamily = 0.01;
 	private double tassoBusiness = 0.05;
