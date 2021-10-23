@@ -28,22 +28,17 @@ public class Utente {
 	// Controlla se il nome utente e la password passati corrispondono a quelli dell'utente
 	public boolean check(String nomeUtente, String password)	
 	{
-		boolean result = false;
-		
-		if(this.nomeUtente.equals(nomeUtente) && this.password.equals(password)) result = true;
-		
-		return result;
+		return this.nomeUtente.equals(nomeUtente) && this.password.equals(password);
 	}
 	
-	// Cambia la password memorizzata se la oldPassword coincide con l'ultima password memorizzata 
+	// Cambia la password memorizzata se oldPassword coincide con l'ultima password memorizzata 
 	public boolean changePassword(String oldPassword, String newPassword)
 	{
 		boolean result = false;
 		
-		if(oldPassword.equals(password))
+		if(result = oldPassword.equals(password))
 		{
 			password = newPassword;
-			result = true;
 		}
 		
 		return result;

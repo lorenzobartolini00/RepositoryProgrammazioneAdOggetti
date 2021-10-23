@@ -4,47 +4,67 @@ import java.util.Scanner;
 import GestioneBanca.TerminaleSportello;
 import GestioneBanca.Utente;
 import GestioneBanca.ContoCorrente;
+import GestioneBanca.Dictionary;
+import java.util.*;
 
 public class GestioneBanca {
 	
 	public static void main(String[] args) {
 		
 		Scanner input= new Scanner(System.in);
-		String inp;
-		Utente[] utenti = new Utente[100];
+		Utente[] utenti = new Utente[10];
 		TerminaleSportello terminale = new TerminaleSportello(utenti);
+		Dictionary dictionary = new Dictionary();
 		boolean login = false;
-		//aggiungi metodo controlla
-		while(login) {
-			System.out.println("Quale operazione desidera fare?");
-			inp=input.nextLine();
-			switch(inp) {
-				case "Login": if(terminale.login()) {
-					System.out.println("Login effettuato");
-					login = true;
-				}
-				case "Sign in": {
-					System.out.println("Inserisci username e password");
-					String newnome=input.nextLine();
-					String newpassword=input.nextLine();
-					Utente utente = new Utente(newnome, newpassword);
-					utenti[Utente.idUltimo] = utente;					
+		
+		while(!login) 
+		{
+			String listaOperazioniUtente;
+			do {
+				System.out.println("Quale operazione desidera fare?");
+				Dictionary.stampaParoleConsentite("listaOperazioniUtente");
+				listaOperazioniUtente=input.nextLine();
+			}while(!Dictionary.verificaInserimento(listaOperazioniUtente, "listaOperazioniUtente"));
+			
+			switch(listaOperazioniUtente) {
+				case "Login": 
+				{
+					if(login = terminale.login())System.out.println("Login effettuato"); 
+					else System.out.println("Utente non trovato. Occorre prima effettuare il Sign in.");
+					break;
+				}	
+				case "Sign in": 
+				{
+					terminale.SignIn();
+					break;
 				}
 			}
 		}
-		System.out.println("Quale operazione desidera fare sul suo conto?");
-		inp=input.nextLine();
-		switch(inp) {
-			case "Apri Conto" : {
-				System.out.println("Inserisci il tuo nome");
-				String nome=input.nextLine();
+		
+		String listaOperazioniConto;
+		do {
+			System.out.println("Quale operazione desidera fare sul suo conto?");
+			Dictionary.stampaParoleConsentite("listaOperazioniConto");
+			listaOperazioniConto=input.nextLine();
+		}while(!Dictionary.verificaInserimento(listaOperazioniConto, "listaOperazioniConto"));
+		
+		switch(listaOperazioniConto) 
+		{
+			case "Apri conto" : 
+			{
+				String tipoConto;
+				do
+				{
+					System.out.println("Quale tipo di conto desidera aprire?");
+					Dictionary.stampaParoleConsentite("tipoConto");
+					tipoConto=input.nextLine();
+				}while(!Dictionary.verificaInserimento(tipoConto, "tipoConto"));
+				
 				System.out.println("Quanto vuoi versare?");
 				double saldo=input.nextDouble();
-				ContoCorrente cc= new ContoCorrente(nome,saldo) ;
-				}
-		 
+				ContoCorrente cc= new ContoCorrente(tipoConto,saldo);
+				break;
+			}
 		}
-		
 	}
-
 }

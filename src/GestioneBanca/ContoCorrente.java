@@ -2,15 +2,17 @@ package GestioneBanca;
 
 public class ContoCorrente {
 	
-	private String name;
+	private String tipoConto;
 	private double saldo;
 	private double tasso;
 	private int numeroConto;
+	private double tassoFamily = 0.01;
+	private double tassoBusiness = 0.05;
 	private static int numeroUltimoConto;
 	
-	public ContoCorrente(String nome, double saldoIniziale) {
-		name=nome;
-		saldo=saldoIniziale;
+	public ContoCorrente(String tipoConto, double saldoIniziale) {
+		this.tipoConto = tipoConto;
+		this.saldo = saldoIniziale;
 		numeroConto=++numeroUltimoConto;
 		}
 	
@@ -31,7 +33,8 @@ public class ContoCorrente {
 	}
 	
 	public void maturaInteressi() {
-		saldo=saldo*tasso;
+		if( tipoConto == "family" )saldo=saldo*tassoFamily;
+		else if( tipoConto == "business" ) saldo=saldo*tassoBusiness;
 	}
 	
 	public double ottieniSaldo() {
