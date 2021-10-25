@@ -23,7 +23,7 @@ public class GestioneBanca {
 		while(!exit)
 		{
 			// Prima di effettuare il login
-			while(!login) 
+			while(!login && !exit) 
 			{
 				String listaOperazioniUtente;
 				do {
@@ -49,7 +49,6 @@ public class GestioneBanca {
 				case "Exit" :
 				{
 					exit = true;
-					login = true;
 					break;
 				}
 				
