@@ -17,7 +17,7 @@ public class ContoCorrente {
 	
 	public void versa(double somma) {
 		saldo+=somma;
-		System.out.println("Versati:" +somma+ "euro");
+		System.out.println("Versati: " +somma+ "euro");
 	}
 	
 	public boolean preleva(double somma) {
@@ -26,14 +26,15 @@ public class ContoCorrente {
 		}
 		else {
 			saldo-=somma;
-			System.out.println("Prelevati:" +somma+ "euro");
+			System.out.println("Prelevati: " +somma+ "euro");
 			return true;
 		}
 	}
 	
 	public void maturaInteressi() {
-		if( tipoConto == "family" )saldo=saldo*(1+tassoFamily);
-		else if( tipoConto == "business" ) saldo=saldo*(1+tassoBusiness);
+		if( tipoConto.equals("Family") )saldo=saldo*(1.0+tassoFamily);
+		else if( tipoConto.equals("Business") ) saldo=saldo*(1.0+tassoBusiness);
+		else System.out.println("nessun tasso trovato");
 	}
 	
 	public double ottieniSaldo() {
@@ -43,6 +44,8 @@ public class ContoCorrente {
 	public int ottieniNumero() {
 		return numeroConto;
 	}
+	
+	public String getTipoConto() { return tipoConto; }
 	
 }
 

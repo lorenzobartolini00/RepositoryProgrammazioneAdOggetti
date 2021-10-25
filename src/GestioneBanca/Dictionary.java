@@ -16,7 +16,6 @@ public class Dictionary {
 		tipoConto.add("Business");
 		ArrayList<String> listaOperazioniUtente = new ArrayList<>();
 		listaOperazioniUtente.add("Login");
-		listaOperazioniUtente.add("Sign in");
 		listaOperazioniUtente.add("Exit");
 		ArrayList<String> listaOperazioniConto = new ArrayList<>();
 		listaOperazioniConto.add("Apri conto");
@@ -27,11 +26,15 @@ public class Dictionary {
 		listaOperazioniConto.add("Matura interessi");
 		listaOperazioniConto.add("Cambia tasso di interesse");
 		listaOperazioniConto.add("Logout");
+		ArrayList<String> sceltaBinaria = new ArrayList<>();
+		sceltaBinaria.add("Y");
+		sceltaBinaria.add("N");
 		
 		// Associo a ciascuna key il proprio value
 		paroleConsentite.put("tipoConto", tipoConto);
 		paroleConsentite.put("listaOperazioniUtente", listaOperazioniUtente);
 		paroleConsentite.put("listaOperazioniConto", listaOperazioniConto);
+		paroleConsentite.put("sceltaBinaria", sceltaBinaria);
 	}
 	
 	// Getter e Setter
@@ -42,9 +45,9 @@ public class Dictionary {
 	public static boolean verificaInserimento(String parolaDaConfrontare, String contesto)
 	{
 		boolean result = false; 
-		for( String s: paroleConsentite.get(contesto))
+		for( int i=0; i<paroleConsentite.size() && !result; i++ )
 			{
-				if(s.toString().equals(parolaDaConfrontare)) 
+				if(paroleConsentite.get(contesto).get(i).toString().equals(parolaDaConfrontare)) 
 				{
 					result = true;
 				}

@@ -12,8 +12,8 @@ public class Utente {
 	// Costruttore: inizializza nomeUtente e password
 	public Utente(String nomeUtente, String password)
 	{
-		idUltimo++;
 		this.idUtente = idUltimo;
+		idUltimo++;
 		this.nomeUtente = nomeUtente;
 		this.password = password;
 	}

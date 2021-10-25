@@ -2,20 +2,22 @@ package GestioneBanca;
 
 import java.util.*;
 import GestioneBanca.Utente;
+import GestioneBanca.Dictionary;
 
 public class TerminaleSportello {
 	// Attributi
 	private int  activeUserId;
-	Scanner input= new Scanner(System.in);
-	private static Utente[] listaUtenti;
+	Scanner input = new Scanner(System.in);
+	private static ArrayList<Utente> listaUtenti;
+	Dictionary dictionary = new Dictionary();
 	
 	// Costruttore: prende in ingresso un array di utenti e inizializza l'attributo listaUtenti
-	public TerminaleSportello(Utente[] utenti) 
+	public TerminaleSportello(ArrayList<Utente> utenti) 
 	{
 		listaUtenti=utenti;
 	}
 	
-	public static Utente[] getUserList() { return listaUtenti; }
+	public static ArrayList<Utente> getUserList() { return listaUtenti; }
 	public int getActiveUserId() { return activeUserId; } 
 	
 	// Metodi
@@ -33,33 +35,75 @@ public class TerminaleSportello {
 		System.out.println("Inserisci Password");
 		String password=input.nextLine();
 		
-		for(int i=0; i<listaUtenti.length && !result; i++) 
+		for(int i=0; i<listaUtenti.size() && !result; i++) 
 		{
-			if (listaUtenti[i] != null)
+			if (listaUtenti.get(i) != null)
 			{
-				if (listaUtenti[i].check(name, password)) 	// Richiama il metodo check() presente nella classe Utente
+				if (listaUtenti.get(i).check(name, password)) 	// Richiama il metodo check() presente nella classe Utente
 				{
 					result  = true;
-					activeUserId = listaUtenti[i].getId();		// Una volta che l'utente è stato trovato, viene salvato il suo id nel terminale
+					activeUserId = listaUtenti.get(i).getId();		// Una volta che l'utente è stato trovato, viene salvato il suo id nel terminale
+					System.out.println("Il nuovo utente inserito ha il seguente id: " + listaUtenti.get(i).getId());
 				}
 			}	
+		}
+		
+		if( !result )		//Se non è stato trovato nessun utente associato a quelle credenziali, permette di creare un nuovo utente senza inserire nuovamente le credenziali
+		{
+			String sceltaBinaria;
+			do
+			{
+				System.out.println("Utente non trovato.");
+				System.out.println("Si desidera creare un nuovo utente con le credenziali appena inserite?");
+				Dictionary.stampaParoleConsentite("sceltaBinaria");
+				sceltaBinaria=input.nextLine();
+			}while( !Dictionary.verificaInserimento(sceltaBinaria, "sceltaBinaria") );
+			
+			if( sceltaBinaria.equals("Y") )
+			{
+				aggiungiUtente(name, password);
+				System.out.println("Nuovo utente registrato.");
+			}
 		}
 		
 		return result;
 	}
 	
-	public void SignIn()
+	//Funzione che resistuisce il numero di conto sulla quale devono essere eseguite operazioni, dopo averlo chiesto all'utente
+	public int ottieniNumeroConto(HashMap<Utente, ArrayList<ContoCorrente>> banca, String richiesta)		
 	{
-		System.out.println("- Registrazione nuovo utente -");
-		System.out.println("Inserisci Username: ");
-		String newNome=input.nextLine();
-		System.out.println("Inserisci Password: ");
-		String newPassword=input.nextLine();
+		int numeroConto=0;
+		do
+		{
+			System.out.println("Di quale conto?");
+			System.out.println("Numero conti aperti: " + banca.get(listaUtenti.get(activeUserId)).size());
+			numeroConto=input.nextInt();
+			input.nextLine();
+		}while( numeroConto<=0 && numeroConto > banca.get(listaUtenti.get(activeUserId)).size() );
 		
-		Utente utente = new Utente(newNome, newPassword);
-		listaUtenti[Utente.idUltimo] = utente;
+		return numeroConto;
 	}
 	
+	public String ottieniComando(String domanda, String contesto)
+	{
+		String risposta = new String();
+		do {
+			System.out.println(domanda);
+			Dictionary.stampaParoleConsentite(contesto);
+			risposta=input.nextLine();
+		}while(!Dictionary.verificaInserimento(risposta, contesto));
+		
+		return risposta;
+	}
+	
+	//Funzione che crea un nuovo utente e lo aggiunge alla lista
+	private void aggiungiUtente(String name, String password)
+	{
+		Utente utente = new Utente(name, password);	
+		listaUtenti.add(utente);
+	}
+	
+	//Funzione che aggiunge alla lista dei conti che viene passata il conto corrente passato come parametro
 	public void aggiungiConto(ContoCorrente cc, ArrayList<ContoCorrente> listaConti)
 	{
 		listaConti.add(cc);
