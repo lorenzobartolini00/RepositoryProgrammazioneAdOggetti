@@ -15,7 +15,7 @@ public class GestioneBanca {
 		TerminaleSportello terminale = new TerminaleSportello(utenti);
 		Dictionary dictionary = new Dictionary();
 		
-		HashMap<Utente, ContoCorrente> banca = new HashMap<Utente, ContoCorrente>();	
+		HashMap<Utente, ArrayList<ContoCorrente>> banca = new HashMap<Utente, ArrayList<ContoCorrente>>();	
 		
 		boolean login = false;
 		boolean exit = false;
@@ -70,7 +70,6 @@ public class GestioneBanca {
 					if(listaOperazioniConto.equals("Apri conto")) 
 					{
 						// Apri conto
-						// Ogni utente può aprire solo un conto
 						String tipoConto;
 						do
 						{
@@ -85,11 +84,10 @@ public class GestioneBanca {
 							System.out.println("Quanto è il  saldo iniziale?");
 							saldo=input.nextDouble();
 						}while(saldo<0);
+						ArrayList<ContoCorrente> listaConti = new ArrayList<ContoCorrente>();
 						ContoCorrente cc = new ContoCorrente(tipoConto,saldo);
-						// Dopo aver creato il nuovo conto con i parametri inseriti dall'utente, associo l'utente al
-						// suo conto corrente attraverso la mappa "banca". In questa implementazione ad ogni utente 
-						// può essere associato un solo conto corrente.
-					banca.put(TerminaleSportello.getUserList()[terminale.getActiveUserId()] , cc);
+						terminale.aggiungiConto(cc, listaConti);
+						banca.put(TerminaleSportello.getUserList()[terminale.getActiveUserId()] , listaConti);
 					}
 					else
 					{
@@ -104,9 +102,26 @@ public class GestioneBanca {
 					
 					case "Apri conto":
 					{
-						System.out.println("...");
-						//Aggiungere conto corrente
+						System.out.println("- Apertura di un nuovo conto -");
+						// Apri conto
+						String tipoConto;
+						do
+						{
+							System.out.println("Quale tipo di conto desidera aprire?");
+							Dictionary.stampaParoleConsentite("tipoConto");
+							tipoConto=input.nextLine();
+						}while(!Dictionary.verificaInserimento(tipoConto, "tipoConto"));
+						
+						double saldo = 0;
+						do
+						{
+							System.out.println("Quanto è il  saldo iniziale?");
+							saldo=input.nextDouble();
+						}while(saldo<0);
+						ContoCorrente cc = new ContoCorrente(tipoConto, saldo);
+						terminale.aggiungiConto(cc, banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]));
 					}
+					break;
 					
 					// Versa una somma
 					case "Versa" :
@@ -117,7 +132,14 @@ public class GestioneBanca {
 							System.out.println("Quanto si desidera versare?");
 							versamento=input.nextInt();
 						}while( versamento < 0 );
-						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]);
+						int numeroConto=0;
+						do
+						{
+							System.out.println("In quale conto?");
+							System.out.println("Numero conti aperti: " + banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).size());
+							numeroConto=input.nextInt();
+						}while( numeroConto<=0 && numeroConto > banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).size() );
+						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).get(numeroConto-1);
 						cc.versa(versamento);
 					}
 					break;
@@ -131,7 +153,14 @@ public class GestioneBanca {
 							System.out.println("Quanto si desidera prelevare?");
 							prelievo=input.nextInt();
 						}while( prelievo < 0 );
-						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]);
+						int numeroConto=0;
+						do
+						{
+							System.out.println("Da quale conto?");
+							System.out.println("Numero conti aperti: " + banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).size());
+							numeroConto=input.nextInt();
+						}while( numeroConto<=0 && numeroConto > banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).size() );
+						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).get(numeroConto-1);
 						cc.preleva(prelievo);
 					}
 					break;
@@ -139,8 +168,29 @@ public class GestioneBanca {
 					// Stampa saldo
 					case "Saldo" :
 					{
-						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]);
+						int numeroConto=0;
+						do
+						{
+							System.out.println("Di quale conto?");
+							System.out.println("Numero conti aperti: " + banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).size());
+							numeroConto=input.nextInt();
+						}while( numeroConto<=0 && numeroConto > banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).size() );
+						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).get(numeroConto-1);
 						System.out.println("Il saldo è di " + cc.ottieniSaldo() + " euro");
+					}
+					break;
+					
+					case "Numero conto corrente" :
+					{
+						int numeroConto=0;
+						do
+						{
+							System.out.println("Di quale conto?");
+							System.out.println("Numero conti aperti: " + banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).size());
+							numeroConto=input.nextInt();
+						}while( numeroConto<=0 && numeroConto > banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).size() );
+						ContoCorrente cc = banca.get(TerminaleSportello.getUserList()[terminale.getActiveUserId()]).get(numeroConto-1);
+						System.out.println("Il numero di conto è: " + cc.ottieniNumero());
 					}
 					break;
 				

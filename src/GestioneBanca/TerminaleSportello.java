@@ -58,6 +58,10 @@ public class TerminaleSportello {
 		
 		Utente utente = new Utente(newNome, newPassword);
 		listaUtenti[Utente.idUltimo] = utente;
-		
+	}
+	
+	public void aggiungiConto(ContoCorrente cc, ArrayList<ContoCorrente> listaConti)
+	{
+		listaConti.add(cc);
 	}
 }

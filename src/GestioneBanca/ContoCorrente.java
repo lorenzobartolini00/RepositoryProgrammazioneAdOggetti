@@ -7,7 +7,7 @@ public class ContoCorrente {
 	private int numeroConto;
 	private double tassoFamily = 0.01;
 	private double tassoBusiness = 0.05;
-	private static int numeroUltimoConto;
+	private static int numeroUltimoConto = 1000;
 	
 	public ContoCorrente(String tipoConto, double saldoIniziale) {
 		this.tipoConto = tipoConto;
