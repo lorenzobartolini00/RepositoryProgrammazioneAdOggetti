@@ -15,37 +15,34 @@ public class ContoCorrente {
 		numeroConto=++numeroUltimoConto;
 		}
 	
+	//Getter
+	public double getSaldo() {return saldo;}
+	
+	public int getNumero() {return numeroConto;}
+	
+	public String getTipoConto() { return tipoConto; }
+	
 	public void versa(double somma) {
 		saldo+=somma;
 		System.out.println("Versati: " +somma+ "euro");
 	}
 	
-	public boolean preleva(double somma) {
-		if (somma>saldo) {
-			return false;
-		}
-		else {
+	//Metodi
+	public boolean preleva(double somma) 
+	{
+		boolean result = false;
+		if (result=somma<=saldo) 
+		{
 			saldo-=somma;
 			System.out.println("Prelevati: " +somma+ "euro");
-			return true;
 		}
+			
+		return result;
 	}
 	
 	public void maturaInteressi() {
 		if( tipoConto.equals("Family") )saldo=saldo*(1.0+tassoFamily);
 		else if( tipoConto.equals("Business") ) saldo=saldo*(1.0+tassoBusiness);
-		else System.out.println("nessun tasso trovato");
 	}
-	
-	public double ottieniSaldo() {
-		return saldo;
-	}
-	
-	public int ottieniNumero() {
-		return numeroConto;
-	}
-	
-	public String getTipoConto() { return tipoConto; }
-	
 }
 

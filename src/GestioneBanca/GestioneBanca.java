@@ -83,8 +83,8 @@ public class GestioneBanca {
 					}
 					listaConti.add(cc);	
 					unContoAperto = true;
+					break;
 					}
-				break;
 					
 				// Versa una somma
 				case "Versa" :
@@ -102,9 +102,8 @@ public class GestioneBanca {
 						//Viene richiamata la funzione versa presente nella classe ContoCorrente
 						cc.versa(versamento);
 					}
-						
+					break;	
 				}								
-				break;
 			
 					// Preleva una somma
 				case "Preleva" :
@@ -114,10 +113,11 @@ public class GestioneBanca {
 						double prelievo = terminale.ottieniSommaPositiva("Quanto si desidera prelevare?");
 						int numeroConto = terminale.ottieniNumeroConto(banca, "Da quale conto?");
 						ContoCorrente cc = banca.get(activeUser).get(numeroConto-1);
-						cc.preleva(prelievo);		//Viene richiamata la funzione preleva presente nella classe ContoCorrente
+						if(cc.preleva(prelievo))System.out.println("Prelievo effettuato");		//Viene richiamata la funzione preleva presente nella classe ContoCorrente
+						else System.out.println("");
 					}
+					break;
 				}
-				break;
 				
 					// Stampa saldo
 				case "Saldo" :
@@ -126,11 +126,11 @@ public class GestioneBanca {
 					{
 						int numeroConto = terminale.ottieniNumeroConto(banca, "Di quale conto?");
 						ContoCorrente cc = banca.get(activeUser).get(numeroConto-1);
-						System.out.println("Il saldo è di " + cc.ottieniSaldo() + " euro");		//Viene richiamata la funzione ottieniSaldo presente nella classe ContoCorrente
+						System.out.println("Il saldo è di " + cc.getSaldo() + " euro");		//Viene richiamata la funzione ottieniSaldo presente nella classe ContoCorrente
 				
 					}
+					break;
 				}
-				break;
 					
 				case "Numero conto corrente" :
 				{
@@ -138,10 +138,10 @@ public class GestioneBanca {
 					{	
 						int numeroConto = terminale.ottieniNumeroConto(banca, "Di quale conto?");
 						ContoCorrente cc = banca.get(activeUser).get(numeroConto-1);
-						System.out.println("Il numero di conto è: " + cc.ottieniNumero());		//Viene richiamata la funzione ottieniNumero presente nella classe ContoCorrente
+						System.out.println("Il numero di conto è: " + cc.getNumero());		//Viene richiamata la funzione ottieniNumero presente nella classe ContoCorrente
 					}
+					break;
 				}
-				break;
 					
 				case "Matura interessi" :
 				{
@@ -152,16 +152,16 @@ public class GestioneBanca {
 						cc.maturaInteressi();		//Viene richiamata la funzione maturaInteressi presente nella classe ContoCorrente
 						System.out.println("Interessi maturati con tasso " + cc.getTipoConto() );
 					}
+					break;
 				}
-				break;
 				
 					// Esci dal terminale
 				case "Logout" :
 				{
 					login = false;
 					unContoAperto = true;
+					break;
 				}
-				break;
 					
 					// Esci dal programma
 				case "Exit" :
