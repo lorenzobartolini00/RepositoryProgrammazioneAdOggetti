@@ -159,6 +159,7 @@ public class GestioneBanca {
 				case "Logout" :
 				{
 					login = false;
+					unContoAperto = true;
 				}
 				break;
 					
@@ -166,6 +167,7 @@ public class GestioneBanca {
 				case "Exit" :
 				{
 					exit = true;
+					unContoAperto = true;
 					break;
 				}
 				
