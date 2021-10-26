@@ -82,6 +82,7 @@ public class GestioneBanca {
 						banca.put(activeUser, listaConti);
 					}
 					listaConti.add(cc);	
+					unContoAperto = true;
 					}
 				break;
 					
@@ -168,6 +169,10 @@ public class GestioneBanca {
 					break;
 				}
 				
+				}
+				if(!unContoAperto)
+				{
+					System.out.println("Nessun conto aperto!");
 				}
 			}
 		}
