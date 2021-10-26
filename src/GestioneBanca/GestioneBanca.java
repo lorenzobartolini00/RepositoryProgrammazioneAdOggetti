@@ -13,6 +13,7 @@ public class GestioneBanca {
 		Scanner input= new Scanner(System.in);
 		ArrayList<Utente> utenti = new ArrayList<Utente>();
 		TerminaleSportello terminale = new TerminaleSportello(utenti);
+		@SuppressWarnings("unused")
 		Dictionary dictionary = new Dictionary();
 		
 		HashMap<Utente, ArrayList<ContoCorrente>> banca = new HashMap<Utente, ArrayList<ContoCorrente>>();	
@@ -45,13 +46,16 @@ public class GestioneBanca {
 				
 				}
 			}
+			
+			//Salvo in una variabile l'utente attivo sul terminale
+			Utente activeUser = TerminaleSportello.getUserList().get(terminale.getActiveUserId());
 		
 			// Dopo che il login è stato effettuato
 			while(login && !exit)		//Si rimane in questo ciclo fintanto che non viene effettuato il Logout oppure l'uscita, tramite Exit. In caso di Logout si passa al ciclo while precedente, in caso di Exit il programma finisce
 			{
 				System.out.println("- Accesso al terminale -");
 				String listaOperazioniConto = terminale.ottieniComando("Quale operazione desidera fare sul suo conto?", "listaOperazioniConto");
-				boolean unContoAperto = banca.get(TerminaleSportello.getUserList().get(terminale.getActiveUserId()) )!=null;
+				boolean unContoAperto = banca.get(activeUser)!=null;
 				
 				switch(listaOperazioniConto) 
 				{
@@ -60,30 +64,23 @@ public class GestioneBanca {
 				{
 					// Apri conto
 					System.out.println("- Apertura di un nuovo conto -");
+					
 					String tipoConto = terminale.ottieniComando("Quale tipo di conto desidera aprire?", "tipoConto");
-						
-					double saldo = 0;
-					do
-					{
-						System.out.println("Quanto è il  saldo iniziale?");
-						saldo=input.nextDouble();
-						input.nextLine();
-					}while(saldo<0);
+					double saldo = terminale.ottieniSommaPositiva("Quanto è il  saldo iniziale?");
 						
 					ContoCorrente cc = new ContoCorrente(tipoConto, saldo);	
 					ArrayList<ContoCorrente> listaConti;
 						
-					if( unContoAperto )
+					if(unContoAperto)
 					{
-						listaConti = banca.get( TerminaleSportello.getUserList().get(terminale.getActiveUserId()) );
+						listaConti = banca.get(activeUser);
 					}
 
 					else
 					{
 						listaConti = new ArrayList<ContoCorrente>();
-						banca.put(TerminaleSportello.getUserList().get(terminale.getActiveUserId()), listaConti);
+						banca.put(activeUser, listaConti);
 					}
-
 					terminale.aggiungiConto(cc, listaConti);	
 					}
 				break;
@@ -93,19 +90,13 @@ public class GestioneBanca {
 				{
 					if(unContoAperto)
 					{
-						int versamento;
-						do
-						{
-							System.out.println("Quanto si desidera versare?");
-							versamento=input.nextInt();
-							input.nextLine();
-						}while( versamento < 0 );
+						double versamento = terminale.ottieniSommaPositiva("Quanto si desidera versare?");
 						int numeroConto = terminale.ottieniNumeroConto(banca, "In quale conto?");		//Poichè ciascun utente può avere più di un conto, bisogna chiedere all'utente su quale utente vuole eseguire le operazioni
 						
 						//Per fare un versamento occorre recuperare, tramite la funzione get di cui dispone la classe HashMap, la lista di conti corrente associata all'utente che ha fatto il login e poi eseguire su tale oggetto ArrayList la funzione get per recuperare l'elemento i-esimo della lista, dove i è scelto dall'utente
 						//Da notare che la classe ArrayList è diversa dalla classe Array. Infatti questa non dispone della funzione length(), ma occorre usare la funzione size().
 						//Inoltre non si usano le parentesi [] per accedere ad un elemento della lista, ma la funzione get(int index)
-						ContoCorrente cc = banca.get( TerminaleSportello.getUserList().get(terminale.getActiveUserId()) ).get(numeroConto-1);		
+						ContoCorrente cc = banca.get(activeUser).get(numeroConto-1);		
 						
 						//Viene richiamata la funzione versa presente nella classe ContoCorrente
 						cc.versa(versamento);
@@ -119,15 +110,9 @@ public class GestioneBanca {
 				{
 					if(unContoAperto)
 					{
-						int prelievo;
-						do
-						{
-							System.out.println("Quanto si desidera prelevare?");
-							prelievo=input.nextInt();
-							input.nextLine();
-						}while( prelievo < 0 );
+						double prelievo = terminale.ottieniSommaPositiva("Quanto si desidera prelevare?");
 						int numeroConto = terminale.ottieniNumeroConto(banca, "Da quale conto?");
-						ContoCorrente cc = banca.get( TerminaleSportello.getUserList().get(terminale.getActiveUserId()) ).get(numeroConto-1);
+						ContoCorrente cc = banca.get(activeUser).get(numeroConto-1);
 						cc.preleva(prelievo);		//Viene richiamata la funzione preleva presente nella classe ContoCorrente
 					}
 				}
@@ -139,7 +124,7 @@ public class GestioneBanca {
 					if(unContoAperto)
 					{
 						int numeroConto = terminale.ottieniNumeroConto(banca, "Di quale conto?");
-						ContoCorrente cc = banca.get( TerminaleSportello.getUserList().get(terminale.getActiveUserId()) ).get(numeroConto-1);
+						ContoCorrente cc = banca.get(activeUser).get(numeroConto-1);
 						System.out.println("Il saldo è di " + cc.ottieniSaldo() + " euro");		//Viene richiamata la funzione ottieniSaldo presente nella classe ContoCorrente
 				
 					}
@@ -151,7 +136,7 @@ public class GestioneBanca {
 					if(unContoAperto)
 					{	
 						int numeroConto = terminale.ottieniNumeroConto(banca, "Di quale conto?");
-						ContoCorrente cc = banca.get( TerminaleSportello.getUserList().get(terminale.getActiveUserId()) ).get(numeroConto-1);
+						ContoCorrente cc = banca.get(activeUser).get(numeroConto-1);
 						System.out.println("Il numero di conto è: " + cc.ottieniNumero());		//Viene richiamata la funzione ottieniNumero presente nella classe ContoCorrente
 					}
 				}
@@ -160,7 +145,7 @@ public class GestioneBanca {
 				case "Matura interessi" :
 				{
 						int numeroConto = terminale.ottieniNumeroConto(banca, "Di quale conto?");
-						ContoCorrente cc = banca.get( TerminaleSportello.getUserList().get(terminale.getActiveUserId()) ).get(numeroConto-1);
+						ContoCorrente cc = banca.get(activeUser).get(numeroConto-1);
 						cc.maturaInteressi();		//Viene richiamata la funzione maturaInteressi presente nella classe ContoCorrente
 						System.out.println("Interessi maturati con tasso " + cc.getTipoConto() );
 					

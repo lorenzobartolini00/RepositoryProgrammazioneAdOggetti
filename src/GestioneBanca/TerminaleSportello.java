@@ -97,6 +97,18 @@ public class TerminaleSportello {
 		return risposta;
 	}
 	
+	public double ottieniSommaPositiva(String domanda)
+	{
+		double risposta;
+		do {
+			System.out.println(domanda);
+			risposta=input.nextDouble();
+			input.nextLine();
+		}while(risposta<0);
+		
+		return risposta;
+	}
+	
 	//Funzione che crea un nuovo utente e lo aggiunge alla lista
 	private void aggiungiUtente(String name, String password)
 	{
