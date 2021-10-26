@@ -88,7 +88,7 @@ public class GestioneBanca {
 					}
 				break;
 					
-					// Versa una somma
+				// Versa una somma
 				case "Versa" :
 				{
 					if(unContoAperto)
@@ -112,7 +112,7 @@ public class GestioneBanca {
 					}
 						
 				}								
-					break;
+				break;
 			
 					// Preleva una somma
 				case "Preleva" :
@@ -159,13 +159,11 @@ public class GestioneBanca {
 					
 				case "Matura interessi" :
 				{
-					if(unContoAperto)
-					{
 						int numeroConto = terminale.ottieniNumeroConto(banca, "Di quale conto?");
 						ContoCorrente cc = banca.get( TerminaleSportello.getUserList().get(terminale.getActiveUserId()) ).get(numeroConto-1);
 						cc.maturaInteressi();		//Viene richiamata la funzione maturaInteressi presente nella classe ContoCorrente
 						System.out.println("Interessi maturati con tasso " + cc.getTipoConto() );
-					}
+					
 				}
 				break;
 				

@@ -26,6 +26,7 @@ public class Dictionary {
 		listaOperazioniConto.add("Matura interessi");
 		listaOperazioniConto.add("Cambia tasso di interesse");
 		listaOperazioniConto.add("Logout");
+		listaOperazioniConto.add("Exit");
 		ArrayList<String> sceltaBinaria = new ArrayList<>();
 		sceltaBinaria.add("Y");
 		sceltaBinaria.add("N");
@@ -45,7 +46,7 @@ public class Dictionary {
 	public static boolean verificaInserimento(String parolaDaConfrontare, String contesto)
 	{
 		boolean result = false; 
-		for( int i=0; i<paroleConsentite.size() && !result; i++ )
+		for( int i=0; i<paroleConsentite.get(contesto).size() && !result; i++ )
 			{
 				if(paroleConsentite.get(contesto).get(i).toString().equals(parolaDaConfrontare)) 
 				{

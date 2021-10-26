@@ -5,11 +5,13 @@ import GestioneBanca.Utente;
 import GestioneBanca.Dictionary;
 
 public class TerminaleSportello {
+	Scanner input = new Scanner(System.in);
+	Dictionary dictionary = new Dictionary();
+	
 	// Attributi
 	private int  activeUserId;
-	Scanner input = new Scanner(System.in);
 	private static ArrayList<Utente> listaUtenti;
-	Dictionary dictionary = new Dictionary();
+	
 	
 	// Costruttore: prende in ingresso un array di utenti e inizializza l'attributo listaUtenti
 	public TerminaleSportello(ArrayList<Utente> utenti) 
@@ -24,7 +26,6 @@ public class TerminaleSportello {
 	
 	// Esegue il login: chiede all'utente di inserire nomeUtente e password e resistuisce esito positivo se
 	// le credenziali inserite combaciano con quelle di un utente presente nell'array, altrimenti esito negativo
-	
 	public boolean login() 
 	{
 		boolean result = false;
@@ -75,7 +76,7 @@ public class TerminaleSportello {
 		int numeroConto=0;
 		do
 		{
-			System.out.println("Di quale conto?");
+			System.out.println(richiesta);
 			System.out.println("Numero conti aperti: " + banca.get(listaUtenti.get(activeUserId)).size());
 			numeroConto=input.nextInt();
 			input.nextLine();
