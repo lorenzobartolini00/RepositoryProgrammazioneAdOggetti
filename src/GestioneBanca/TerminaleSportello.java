@@ -62,7 +62,8 @@ public class TerminaleSportello {
 			
 			if( sceltaBinaria.equals("Y") )
 			{
-				aggiungiUtente(name, password);
+				Utente utente = new Utente(name, password);	
+				listaUtenti.add(utente);
 				System.out.println("Nuovo utente registrato.");
 			}
 		}
@@ -107,18 +108,5 @@ public class TerminaleSportello {
 		}while(risposta<0);
 		
 		return risposta;
-	}
-	
-	//Funzione che crea un nuovo utente e lo aggiunge alla lista
-	private void aggiungiUtente(String name, String password)
-	{
-		Utente utente = new Utente(name, password);	
-		listaUtenti.add(utente);
-	}
-	
-	//Funzione che aggiunge alla lista dei conti che viene passata il conto corrente passato come parametro
-	public void aggiungiConto(ContoCorrente cc, ArrayList<ContoCorrente> listaConti)
-	{
-		listaConti.add(cc);
 	}
 }

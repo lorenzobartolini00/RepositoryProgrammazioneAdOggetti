@@ -81,7 +81,7 @@ public class GestioneBanca {
 						listaConti = new ArrayList<ContoCorrente>();
 						banca.put(activeUser, listaConti);
 					}
-					terminale.aggiungiConto(cc, listaConti);	
+					listaConti.add(cc);	
 					}
 				break;
 					
