@@ -16,9 +16,9 @@ public class ContoCorrente {
 		}
 	
 	//Getter
-	public double getSaldo() {return saldo;}
+	public double getSaldo() { return saldo; }
 	
-	public int getNumero() {return numeroConto;}
+	public int getNumero() { return numeroConto; }
 	
 	public String getTipoConto() { return tipoConto; }
 	
