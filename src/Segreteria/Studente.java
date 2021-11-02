@@ -29,11 +29,13 @@ public class Studente extends Persona {
 	public void setMatricola(int matricola) { this.matricola = matricola; }
 	
 	//Metodi
-	public void creaPiano() {
+	public void creaPiano() 
+	{
 		pianoStudi = new ArrayList<Esame>();
 	}
 	
-	public boolean aggiungiEsame(Esame esame) {
+	public boolean aggiungiEsame(Esame esame) 
+	{
 		boolean esito = false;
 		if(!this.esamePresente(esame)) esito = pianoStudi.add(esame);
 		return esito;
@@ -78,9 +80,7 @@ public class Studente extends Persona {
 		for( Esame e : pianoStudi )
 			if(e.getRisultato().equals(Esame.Risultato.SUPERATO))
 			{
-				{
-					InOut.stampaInColonna( e.getNome(), Integer.toString(e.getCrediti()), Integer.toString(e.getVoto()) );
-				}
+				InOut.stampaInColonna( e.getNome(), Integer.toString(e.getCrediti()), Integer.toString(e.getVoto()) );
 			}
 	}
 	
