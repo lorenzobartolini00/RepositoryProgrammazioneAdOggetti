@@ -37,16 +37,17 @@ public class Studente extends Persona {
 	public boolean aggiungiEsame(Esame esame) 
 	{
 		boolean esito = false;
-		if(!this.esamePresente(esame)) esito = pianoStudi.add(esame);
+		if(!this.isPresent(esame)) esito = pianoStudi.add(esame);
 		return esito;
 	}
 	
-	public boolean rimuoviEsame(Esame esame) {
+	public boolean rimuoviEsame(Esame esame) 
+	{
 		return pianoStudi.remove(esame);
 	}
 	
 	//Controlla se esame presente nella lista
-	public boolean esamePresente(Esame esame)
+	private boolean isPresent(Esame esame)
 	{
 		return pianoStudi.contains(esame);
 	}
