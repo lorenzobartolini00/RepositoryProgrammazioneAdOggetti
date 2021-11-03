@@ -10,6 +10,7 @@ public class Studente extends Persona {
 	private float mediaAritmetica=0;
 	private int esamiSuperati=0;
 	private int sommaVoti=0;
+	private boolean isLaureato = false;
 	
 	//Costruttore
 	Studente(String nome, String cognome, int matricola)
@@ -24,11 +25,13 @@ public class Studente extends Persona {
 	public int getMatricola() { return this.matricola; }
 	public ArrayList<Esame> getPianoStudi() { return pianoStudi; }
 	public float getMediaAritmetica() { return this.mediaAritmetica; }
+	public boolean getIsLaureato() { return this.isLaureato; }
 	public void setNome(String nome) { super.nome = nome; }
 	public void setCognome(String cognome) { super.cognome = cognome; }
 	public void setMatricola(int matricola) { this.matricola = matricola; }
 	public void setMediaAritmetica(float mediaAritmetica) {this.mediaAritmetica= mediaAritmetica;}
 	public void setPianoStudi(ArrayList<Esame> pianoStudi) {this.pianoStudi= pianoStudi;}
+	public void setIsLaureato(boolean isLaureato) { this.isLaureato = isLaureato; }
 	
 	//Metodi
 	public void creaPiano() 
