@@ -67,4 +67,6 @@ public class Database {
 		
 		
 	}
+	
+	public HashMap<CorsoLaurea, ArrayList<Esame>> getAteneo() { return ateneo; }
 }

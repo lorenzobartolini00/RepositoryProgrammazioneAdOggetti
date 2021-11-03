@@ -44,6 +44,18 @@ public class CorsoLaurea {
 		return esito;
 	}
 	
+	public Studente Cercare(String nomeStudente) {
+		Studente studente = null;
+		for( Studente s : listaStudenti )
+		{
+			if(s.getNome().equals(nomeStudente)) 
+		   	{
+				studente = s;
+		   	}
+		}
+		return studente;
+	}
+	
 	public boolean Ritirare(Studente studente) {
 		return listaStudenti.remove(studente);
 	}
@@ -53,7 +65,6 @@ public class CorsoLaurea {
 		if (listaStudenti.isEmpty()) {
 			System.out.println("Nessun iscritto al corso");
 		}
-		
 	}
 	
 	public void VisualizzaLaureati() {
