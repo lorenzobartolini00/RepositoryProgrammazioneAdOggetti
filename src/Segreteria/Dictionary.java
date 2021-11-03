@@ -11,30 +11,29 @@ public class Dictionary {
 	Dictionary()
 	{
 		// Crea un oggetto ArrayList in cui inserisco le parole consentite per ogni "contesto"
-		ArrayList<String> tipoConto = new ArrayList<>();
-		tipoConto.add("Family");
-		tipoConto.add("Business");
-		ArrayList<String> listaOperazioniUtente = new ArrayList<>();
-		listaOperazioniUtente.add("Login");
-		listaOperazioniUtente.add("Exit");
-		ArrayList<String> listaOperazioniConto = new ArrayList<>();
-		listaOperazioniConto.add("Apri conto");
-		listaOperazioniConto.add("Versa");
-		listaOperazioniConto.add("Preleva");
-		listaOperazioniConto.add("Saldo");
-		listaOperazioniConto.add("Numero conto corrente");
-		listaOperazioniConto.add("Matura interessi");
-		listaOperazioniConto.add("Cambia tasso di interesse");
-		listaOperazioniConto.add("Logout");
-		listaOperazioniConto.add("Exit");
+		ArrayList<String> listaOperazioniStudente = new ArrayList<>();
+		listaOperazioniStudente.add("Cerca");
+		listaOperazioniStudente.add("Iscrivi");
+		listaOperazioniStudente.add("Ritira");
+		listaOperazioniStudente.add("Visualizza iscritti");
+		listaOperazioniStudente.add("Visualizza studenti");
+		ArrayList<String> listaOperazioniEsami = new ArrayList<>();
+		listaOperazioniEsami.add("Crea");
+		listaOperazioniEsami.add("Aggiungi");
+		listaOperazioniEsami.add("Preleva");
+		listaOperazioniEsami.add("Saldo");
+		listaOperazioniEsami.add("Numero conto corrente");
+		listaOperazioniEsami.add("Matura interessi");
+		listaOperazioniEsami.add("Cambia tasso di interesse");
+		listaOperazioniEsami.add("Logout");
+		listaOperazioniEsami.add("Exit");
 		ArrayList<String> sceltaBinaria = new ArrayList<>();
 		sceltaBinaria.add("Y");
 		sceltaBinaria.add("N");
 		
 		// Associo a ciascuna key il proprio value
-		paroleConsentite.put("tipoConto", tipoConto);
-		paroleConsentite.put("listaOperazioniUtente", listaOperazioniUtente);
-		paroleConsentite.put("listaOperazioniConto", listaOperazioniConto);
+		paroleConsentite.put("listaOperazioniStudente", listaOperazioniStudente);
+		paroleConsentite.put("listaOperazioniEsami", listaOperazioniEsami);
 		paroleConsentite.put("sceltaBinaria", sceltaBinaria);
 	}
 	
