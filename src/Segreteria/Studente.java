@@ -101,4 +101,10 @@ public class Studente extends Persona {
 				mediaAritmetica = sommaVoti/esamiSuperati;
 			}
 	}
+	
+	public String toString()
+	{
+		String s = Integer.toString(matricola) +" | "+ nome;
+		return s;
+	}
 }

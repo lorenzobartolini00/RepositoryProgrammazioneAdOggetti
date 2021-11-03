@@ -13,9 +13,4 @@ public class InOut {
 		
 		System.out.println(stringaFinale);
 	}
-	
-	public static void stampa(String parola)
-	{
-		System.out.println(parola);
-	}
 }
