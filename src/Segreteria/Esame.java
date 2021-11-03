@@ -24,6 +24,6 @@ public class Esame {
 	public void setCrediti(int crediti) {this.crediti = crediti;}
 	
 	
-	
+	//aggiungere ereditarietà e creare esami spicifici
 	//TODO finire di scrivere setter e la dichiarazione del metodo aggiungiEsameAlDatabase(CorsoLaurea c)
 }
