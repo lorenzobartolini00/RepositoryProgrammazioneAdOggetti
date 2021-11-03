@@ -28,6 +28,7 @@ public class Studente extends Persona {
 	public void setCognome(String cognome) { super.cognome = cognome; }
 	public void setMatricola(int matricola) { this.matricola = matricola; }
 	public void setMediaAritmetica(float mediaAritmetica) {this.mediaAritmetica= mediaAritmetica;}
+	public void setPianoStudi(ArrayList<Esame> pianoStudi) {this.pianoStudi= pianoStudi;}
 	
 	//Metodi
 	public void creaPiano() 
