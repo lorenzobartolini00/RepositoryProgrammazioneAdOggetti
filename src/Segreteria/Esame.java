@@ -17,8 +17,13 @@ public class Esame {
 	public int getCrediti() { return crediti; }
 	public int getVoto() { return voto; }
 	
+	public void setNome(String nome) {this.nome = nome;}
+	public void getId(int id) {this.id = id;}
 	public void setVoto(int voto) { this.voto = voto; }
 	public void setRisultato(Risultato risultato) {this.risultato = risultato;  }
+	public void setCrediti(int crediti) {this.crediti = crediti;}
+	
+	
 	
 	//TODO finire di scrivere setter e la dichiarazione del metodo aggiungiEsameAlDatabase(CorsoLaurea c)
 }

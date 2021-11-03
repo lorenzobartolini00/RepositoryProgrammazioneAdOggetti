@@ -18,7 +18,7 @@ public class Studente extends Persona {
 		this.matricola = matricola;
 	}
 	
-	//Getter e setter
+	//Getter e setter, aggiungere setter pianoDiStudi
 	public String getNome() { return super.nome; }
 	public String getCognome() { return super.cognome; }
 	public int getMatricola() { return this.matricola; }
@@ -27,6 +27,7 @@ public class Studente extends Persona {
 	public void setNome(String nome) { super.nome = nome; }
 	public void setCognome(String cognome) { super.cognome = cognome; }
 	public void setMatricola(int matricola) { this.matricola = matricola; }
+	public void setMediaAritmetica(float mediaAritmetica) {this.mediaAritmetica= mediaAritmetica;}
 	
 	//Metodi
 	public void creaPiano() 
