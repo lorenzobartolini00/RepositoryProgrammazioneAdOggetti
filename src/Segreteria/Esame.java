@@ -8,7 +8,16 @@ public class Esame {
 	private int crediti;
 	private Risultato risultato;
 	
+	private static int idUltimo = 0;
+	
 	public enum Risultato {SUPERATO, NON_SUPERATO;}
+	
+	public Esame(String nome, int crediti)
+	{
+		this.nome = nome;
+		this.crediti = crediti;
+		this.id = ++idUltimo;
+	}
 	
 	//Getter e setter
 	public String getNome() { return this.nome; }
