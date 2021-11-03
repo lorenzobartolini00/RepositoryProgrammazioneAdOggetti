@@ -26,16 +26,45 @@ public class CorsoLaurea {
 	public void setLista(ArrayList<Studente> listaStudenti) {this.listaStudenti=listaStudenti;}
 	
 	//Metodi
-	public void Iscrivere(Studente studente) {
+	public boolean Iscrivere(Studente studente) {
 		boolean esito=false;
 		if (!listaStudenti.contains(studente)) 
 		{
-			esito=listaStudenti.add(studente);
+			 esito=listaStudenti.add(studente);
 		}
+		return esito;
 	}
 	
+	public boolean Cercare(Studente studente) {
+		boolean esito=false;
+		if(listaStudenti.contains(studente)) 
+		   	{
+			 esito=true;
+		   	}
+		return esito;
+	}
 	
+	public boolean Ritirare(Studente studente) {
+		return listaStudenti.remove(studente);
+	}
 	
+	public void VisualizzaStudenti() {
+		System.out.println(listaStudenti);
+		if (listaStudenti.isEmpty()) {
+			System.out.println("Nessun iscritto al corso");
+		}
+		
+	}
+	
+	public void VisualizzaLaureati() {
+		for(Studente studente:listaStudenti) 
+		{
+			if (studente.getIsLaureato()) 
+			{
+				System.out.println(studente);
+			}
+		}
+	}
 	
 
 }
