@@ -1,31 +1,33 @@
 package Segreteria;
-import Segreteria.Dic
+
+import java.util.Scanner;
 
 public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		Scanner input= new Scanner(System.in);
+		
 		//operazioni studente
 		
-		boolean login = false;
+		boolean gotStudente = false;
 		boolean exit = false;
 		
 		while(!exit)
 		{
 			// Prima di effettuare il login
-			while(!login && !exit) 
+			while(!gotStudente && !exit) 
 			{
-				System.out.println("- Accesso alla banca -");
-				String listaOperazioniUtente = terminale.ottieniComando("Quale operazione desidera fare?", "listaOperazioniUtente");
+				String listaOperazioniStudente = InOut.ottieniComando("Quale operazione desidera fare?", "listaOperazioniStudente");
 				
-				// Chiede all'utente se vuole registrarsi o uscire
-				switch(listaOperazioniUtente) 
+				// Chiede all'utente se vuole cercare uno studente o uscire
+				switch(listaOperazioniStudente) 
 				{
-				case "Login": 
+				case "Cerca": 
 					{
-						if(login = terminale.login())System.out.println("Login effettuato."); 		//Chiama la funzione della classe terminale login, che ritorna true in caso di accesso effettuato, cioè nel caso in cui le credenziali inserite combacino con quelle di un utente inserito nella lista
-						else System.out.println("Login non effettuato. Procedere con un nuovo tentativo.");		//Ritorna false nel caso in cui l'utente inserito non è presente nella lista di quelli che si sono registrati
+						if(gotStudente = InOut.gotStudente())System.out.println("Studente trovato."); 		//Chiama la funzione della classe terminale login, che ritorna true in caso di accesso effettuato, cioè nel caso in cui le credenziali inserite combacino con quelle di un utente inserito nella lista
+						else System.out.println("Studente non Trovato. Procedere con un nuovo tentativo.");		//Ritorna false nel caso in cui l'utente inserito non è presente nella lista di quelli che si sono registrati
 						break;
 					}
 				case "Exit" :
