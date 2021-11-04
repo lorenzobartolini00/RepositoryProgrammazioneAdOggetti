@@ -14,6 +14,7 @@ public class main {
 		Database database = new Database();
 		
 		
+		
 		//operazioni studente
 		
 		while(!exit) {
@@ -21,7 +22,7 @@ public class main {
 			
 			int listaOperazioniStudente = inout.ottieniComando("Quale operazione vuoi fare?", "listaOperazioniStudente")-1;
 			switch(listaOperazioniStudente) {
-			//cerca iscrivi ritira visul iscittti visul laurati
+			//cerca iscrivi ritira visul iscritti visul laurati
 			
 			case 0 :
 			{
