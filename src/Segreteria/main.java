@@ -19,11 +19,11 @@ public class main {
 		while(!exit) {
 			
 			
-			String listaOperazioniStudente = inout.ottieniComando("Quale operazione vuoi fare?", "listaOperazioniStudente");
+			int listaOperazioniStudente = inout.ottieniComando("Quale operazione vuoi fare?", "listaOperazioniStudente");
 			switch(listaOperazioniStudente) {
 			//cerca iscrivi ritira visul iscittti visul laurati
 			
-			case "Cerca" :
+			case Dictionary.comandList.CERCA_STUDENTE.getIndiceComando() :
 			{
 				System.out.println("Inserire nome:");
 				String nomeStudente = input.nextLine();
@@ -40,6 +40,8 @@ public class main {
 				}
 				
 			}
+			case Dictionary.comandList.ISCRIVI.getIndiceComando() :
+				break;
 			}
 		}
 	}
