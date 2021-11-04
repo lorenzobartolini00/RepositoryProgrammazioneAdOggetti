@@ -32,8 +32,8 @@ public class Database {
 			new Esame("Programmazione ad oggetti", 9),
 			new Esame("Sistemi di telecomunicazioni", 9),
 			new Esame("Circuiti e algoritmi per il digital signal processing", 6)
-			};
-	
+	};
+
 	Database()
 	{
 		esami_ingengeria.addAll(Arrays.asList(array_esami_ingengeria));
