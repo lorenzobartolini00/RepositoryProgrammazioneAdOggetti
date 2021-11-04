@@ -83,20 +83,6 @@ public class Dictionary {
 	// Getter e Setter
 	public HashMap<String, ArrayList<String>> getParoleConsentite(){ return paroleConsentite; }
 	// Metodi
-	// Verifica che la stringa passata sia presente all'interno dell'ArrayList per quello specifico contesto
-	
-	/*public static boolean verificaInserimento(String parolaDaConfrontare, String contesto)
-	{
-		boolean result = false; 
-		for( int i=0; i<paroleConsentite.get(contesto).size() && !result; i++ )
-			{
-				if(paroleConsentite.get(contesto).get(i).toString().equals(parolaDaConfrontare)) 
-				{
-					result = true;
-				}
-			}
-		return result;
-	}*/
 	
 	public static void stampaParoleConsentite(String contesto)
 	{

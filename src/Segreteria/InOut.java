@@ -22,18 +22,6 @@ public class InOut {
 		
 		System.out.println(stringaFinale);
 	}
-		
-	/*public String ottieniComando(String domanda, String contesto)
-	{
-		String risposta = new String();
-		do {
-			System.out.println(domanda);
-			Dictionary.stampaParoleConsentite(contesto);
-			risposta=input.nextLine();
-		}while(!Segreteria.Dictionary.verificaInserimento(risposta, contesto));
-			
-		return risposta;
-	}*/
 	
 	public int ottieniComando(String domanda, String contesto)
 	{
