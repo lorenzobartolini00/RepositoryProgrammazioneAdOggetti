@@ -14,7 +14,7 @@ public class Automobile {
 	private String targa;
 	private String marca;
 	private String modello;
-	private Motore motore = new Motore();
+	private Motore motore;
 	private ArrayList<Optional> listaOptional=new ArrayList<Optional>();
 	
 	//costruttore
