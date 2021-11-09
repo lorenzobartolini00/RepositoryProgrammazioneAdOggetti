@@ -6,19 +6,19 @@ import motori.Motore;
 
 public class Fuoristrada extends Automobile{
 	
-	private float altezzaSospensioni;
+	private float passo;	//in millimetri
 	
-	public Fuoristrada(String targa, String marca, String modello, Motore motore, ArrayList<Optional> listaOptional, float altezzaSospensioni) {
-		super(targa,marca,modello,motore,listaOptional);
-		this.altezzaSospensioni=altezzaSospensioni;
+	public Fuoristrada(String targa, String marca, String modello, Motore motore, float passo) {
+		super(targa,marca,modello,motore);
+		this.passo=passo;
 	}
 
-	public float getAltezzaSospensioni() {
-		return altezzaSospensioni;
+	public float getPasso() {
+		return passo;
 	}
 
-	public void setAltezzaSospensioni(float altezzaSospensioni) {
-		this.altezzaSospensioni = altezzaSospensioni;
+	public void setPasso(float passo) {
+		this.passo = passo;
 	}
 	
 }

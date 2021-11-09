@@ -5,9 +5,10 @@ package motori;
 public class MotoreDiesel extends Motore{
 	private static final int RPM_diesel_default = 3000;
 	
-	MotoreDiesel(int cilindri, float cilindrata, int rPM)
+	public MotoreDiesel(int cilindri, int cilindrata)
 	{
 		super(cilindri, cilindrata, RPM_diesel_default);
+		this.potenza = this.cilindrata/this.cilindri/10;
 	}
 	
 	//Getter e setter
@@ -17,14 +18,14 @@ public class MotoreDiesel extends Motore{
 		public void setCilindri(int cilindri) {
 			this.cilindri = cilindri;
 		}
-		public float getCilindrata() {
+		public int getCilindrata() {
 			return this.cilindrata;
 		}
-		public void setCilindrata(float cilindrata) {
+		public void setCilindrata(int cilindrata) {
 			this.cilindrata = cilindrata;
 		}
 		public float getPotenza() {
-			return cilindrata/cilindri/10;
+			return potenza;
 		}
 		public void setPotenza(float potenza) {
 			this.potenza = potenza;

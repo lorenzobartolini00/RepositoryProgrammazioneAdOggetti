@@ -3,20 +3,20 @@ package motori;
 public class Motore {
 	//Default 
 	private final int cilindri_default = 4;
-	private final float cilindrata_default = 1200;
+	private final int cilindrata_default = 1200;
 	private final float potenza_default = 85;
 	private final boolean isDiesel_default = false;
 	private final int RPM_default = 7000;
 	
 	
-	public Motore(int cilindri, float cilindrata, int rPM) {
+	public Motore(int cilindri, int cilindrata, int rPM) {
 		this.cilindri = cilindri;
 		this.cilindrata = cilindrata;
 		this.RPM = rPM;
 	}
 	//Attributi
 	protected int cilindri;
-	protected float cilindrata;
+	protected int cilindrata;
 	protected float potenza;
 	protected boolean isDiesel;
 	protected int RPM;
@@ -28,10 +28,10 @@ public class Motore {
 	public void setCilindri(int cilindri) {
 		this.cilindri = cilindri;
 	}
-	public float getCilindrata() {
+	public int getCilindrata() {
 		return cilindrata_default;
 	}
-	public void setCilindrata(float cilindrata) {
+	public void setCilindrata(int cilindrata) {
 		this.cilindrata = cilindrata;
 	}
 	public float getPotenza() {
@@ -51,6 +51,15 @@ public class Motore {
 	}
 	public void setRPM(int rPM) {
 		RPM = rPM;
+	}
+	
+	public String toString()
+	{
+		return Integer.toString(this.cilindri) + " | "
+				+ Integer.toString(this.cilindrata) + " | "
+				+ Integer.toString(this.RPM) + " | "
+				+ Boolean.toString(this.isDiesel) + " | "
+				+ Float.toString(this.potenza);
 	}
 	
 }

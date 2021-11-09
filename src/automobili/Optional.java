@@ -7,6 +7,14 @@ public class Optional {
 	private String descrizione;
 	private float valore;
 	
+
+	//costruttore
+	public Optional(String codice, String descrizione, float valore) {
+		this.codice=codice;
+		this.descrizione=descrizione;
+		this.valore=valore;
+	}
+	
 	//getter e setter
 	public String getCodice() {
 		return codice;
@@ -30,13 +38,6 @@ public class Optional {
 
 	public void setValore(float valore) {
 		this.valore = valore;
-	}
-	
-	//costruttore
-	public Optional(String codice, String descrizione, float valore) {
-		this.codice=codice;
-		this.descrizione=descrizione;
-		this.valore=valore;
 	}
 	
 	//metodo

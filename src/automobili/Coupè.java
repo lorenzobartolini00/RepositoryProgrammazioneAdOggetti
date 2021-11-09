@@ -12,8 +12,8 @@ public class Coupè extends Automobile {
 	
 	
 	//costruttore
-	public Coupè(String targa, String marca, String modello, Motore motore, ArrayList<Optional> listaOptional, float tempoAperturaTettuccio, String materialeTettuccio) {
-		super(targa,marca,modello,motore,listaOptional);
+	public Coupè(String targa, String marca, String modello, Motore motore, float tempoAperturaTettuccio, String materialeTettuccio) {
+		super(targa,marca,modello,motore);
 		this.tempoAperturaTettuccio=tempoAperturaTettuccio;
 		this.materialeTettuccio=materialeTettuccio;
 	}

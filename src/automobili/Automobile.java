@@ -19,13 +19,11 @@ public class Automobile {
 	
 	//costruttore
 	
-	public Automobile(String targa, String marca, String modello, Motore motore, ArrayList<Optional> listaOptional) {
+	public Automobile(String targa, String marca, String modello, Motore motore) {
 		this.targa=targa;
 		this.marca=marca;
 		this.modello=modello;
 		this.motore=motore;
-		this.listaOptional=listaOptional;
-		
 	}
 		
 	//getter e setter
@@ -57,11 +55,14 @@ public class Automobile {
 	//metodi
 	
 	//addOption deve prendere in ingresso un'istanza della classe Optional
-	public void addOptional() {
-		String codice = in.nextLine();
-		String descrizione = in.nextLine();
-		float valore = in.nextFloat();
-		Optional optional=new Optional(codice,descrizione,valore);
-		listaOptional.add(optional);
+	public void addOptional(Optional ... optional) {
+		for( Optional o : optional)
+			 {
+				listaOptional.add(o);
+			 }
+	}
+	
+	public String toString() {
+		return this.targa + " | "+ this.marca + " | "+ this.modello + " || "+ this.motore.toString();
 	}
 }
