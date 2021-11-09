@@ -12,4 +12,13 @@ public class Tipo_4x4 extends Automobile{
 		super(targa,marca,modello,motore,listaOptional);
 		this.altezzaSospensioni=altezzaSospensioni;
 	}
+
+	public float getAltezzaSospensioni() {
+		return altezzaSospensioni;
+	}
+
+	public void setAltezzaSospensioni(float altezzaSospensioni) {
+		this.altezzaSospensioni = altezzaSospensioni;
+	}
+	
 }
