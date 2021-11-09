@@ -2,12 +2,12 @@ package motori;
 
 
 
-public class MotoreDiesel extends Motore{
-	private static final int RPM_diesel_default = 3000;
+public class MotoreBenzina extends Motore{
+	private static final int RPM_benzina_default = 9000;
 	
-	MotoreDiesel(int cilindri, float cilindrata, int rPM)
+	MotoreBenzina(int cilindri, float cilindrata, int rPM)
 	{
-		super(cilindri, cilindrata, RPM_diesel_default);
+		super(cilindri, cilindrata, RPM_benzina_default);
 	}
 	
 	//Getter e setter
@@ -24,13 +24,13 @@ public class MotoreDiesel extends Motore{
 			this.cilindrata = cilindrata;
 		}
 		public float getPotenza() {
-			return cilindrata/cilindri/10;
+			return cilindrata/cilindri/20;
 		}
 		public void setPotenza(float potenza) {
 			this.potenza = potenza;
 		}
 		public boolean isDiesel() {
-			return isDiesel = (this instanceof MotoreDiesel);
+			return isDiesel = !(this instanceof MotoreBenzina);
 		}
 		public void setDiesel(boolean isDiesel) {
 			this.isDiesel = isDiesel;
