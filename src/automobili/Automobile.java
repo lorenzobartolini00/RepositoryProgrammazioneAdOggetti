@@ -1,6 +1,7 @@
 package automobili;
 
-import java.util.Scanner;
+import java.util.*;
+import motori.Motore;
 
 //creo la superclasse automobile
 
