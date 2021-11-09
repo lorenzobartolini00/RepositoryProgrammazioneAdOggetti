@@ -16,6 +16,17 @@ public class Automobile {
 	private String modello;
 	private Motore motore;
 	private ArrayList<Optional> listaOptional=new ArrayList<Optional>();
+	
+	//costruttore
+	
+	public Automobile(String targa, String marca, String modello, Motore motore, ArrayList<Optional> listaOptional) {
+		this.targa=targa;
+		this.marca=marca;
+		this.modello=modello;
+		this.motore=motore;
+		this.listaOptional=listaOptional;
+		
+	}
 		
 	//getter e setter
 	public String getTarga() {
