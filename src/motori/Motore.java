@@ -3,7 +3,19 @@ package motori;
 public class Motore {
 	//Default 
 	private final int cilindri_default = 4;
+	private final float cilindrata_default = 1200;
+	private final float potenza_default = 85;
+	private final boolean isDiesel_default = false;
+	private final int RPM_default = 7000;
 	
+	
+	public Motore(int cilindri, float cilindrata, float potenza, boolean isDiesel, int rPM) {
+		this.cilindri = cilindri;
+		this.cilindrata = cilindrata;
+		this.potenza = potenza;
+		this.isDiesel = isDiesel;
+		this.RPM = rPM;
+	}
 	//Attributi
 	private int cilindri;
 	private float cilindrata;
