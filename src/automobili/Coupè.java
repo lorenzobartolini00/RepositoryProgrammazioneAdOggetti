@@ -1,7 +1,5 @@
 package automobili;
 
-import java.util.ArrayList;
-
 import motori.Motore;
 
 public class Coupè extends Automobile {

@@ -7,8 +7,10 @@ public class MotoreBenzina extends Motore{
 	
 	public MotoreBenzina(int cilindri, int cilindrata)
 	{
-		super(cilindri, cilindrata, RPM_benzina_default);
+		super(cilindri, cilindrata);
 		this.potenza = this.cilindrata/this.cilindri/20;
+		this.isDiesel = !(this instanceof MotoreBenzina);
+		this.RPM = RPM_benzina_default;
 	}
 	
 	//Getter e setter

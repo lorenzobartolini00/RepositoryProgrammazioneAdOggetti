@@ -7,8 +7,10 @@ public class MotoreDiesel extends Motore{
 	
 	public MotoreDiesel(int cilindri, int cilindrata)
 	{
-		super(cilindri, cilindrata, RPM_diesel_default);
+		super(cilindri, cilindrata);
 		this.potenza = this.cilindrata/this.cilindri/10;
+		this.isDiesel = this instanceof MotoreDiesel;
+		this.RPM = RPM_diesel_default;
 	}
 	
 	//Getter e setter
@@ -31,7 +33,7 @@ public class MotoreDiesel extends Motore{
 			this.potenza = potenza;
 		}
 		public boolean isDiesel() {
-			return isDiesel = (this instanceof MotoreDiesel);
+			return isDiesel;
 		}
 		public void setDiesel(boolean isDiesel) {
 			this.isDiesel = isDiesel;

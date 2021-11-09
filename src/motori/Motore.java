@@ -9,10 +9,9 @@ public class Motore {
 	private final int RPM_default = 7000;
 	
 	
-	public Motore(int cilindri, int cilindrata, int rPM) {
+	public Motore(int cilindri, int cilindrata) {
 		this.cilindri = cilindri;
 		this.cilindrata = cilindrata;
-		this.RPM = rPM;
 	}
 	//Attributi
 	protected int cilindri;
@@ -55,11 +54,11 @@ public class Motore {
 	
 	public String toString()
 	{
-		return Integer.toString(this.cilindri) + " | "
-				+ Integer.toString(this.cilindrata) + " | "
-				+ Integer.toString(this.RPM) + " | "
+		return Integer.toString(this.cilindri) + " cilindri" + " | "
+				+ Integer.toString(this.cilindrata) + "cc" + " | "
+				+ Integer.toString(this.RPM) + "rpm" + " | "
 				+ Boolean.toString(this.isDiesel) + " | "
-				+ Float.toString(this.potenza);
+				+ Float.toString(this.potenza) + "kilowatt";
 	}
 	
 }

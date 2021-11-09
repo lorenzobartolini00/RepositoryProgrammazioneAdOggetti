@@ -42,7 +42,9 @@ public class Optional {
 	
 	//metodo
 	public String toString() {
-		return codice+descrizione+valore;
+		return "Codice: " + codice + " | "
+				+ "Descrizione: " + descrizione + " | "
+				+ "Prezzo: " + valore + "$" + " | ";
 	}
 
 }

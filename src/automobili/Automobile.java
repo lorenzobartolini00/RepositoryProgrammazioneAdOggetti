@@ -63,6 +63,15 @@ public class Automobile {
 	}
 	
 	public String toString() {
-		return this.targa + " | "+ this.marca + " | "+ this.modello + " || "+ this.motore.toString();
+		String s = new String();
+		for(Optional o: listaOptional)
+		{
+			s +=o.toString();
+		}
+		return "Numero targa: " + this.targa + " | "
+		+ "Marca: " + this.marca + " | "
+		+ "Modello: " + this.modello + " || "
+		+ this.motore.toString() +"||"
+		+ s;
 	}
 }
