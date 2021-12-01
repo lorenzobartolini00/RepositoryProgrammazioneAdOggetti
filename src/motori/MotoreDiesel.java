@@ -15,7 +15,7 @@ public class MotoreDiesel extends Motore{
 	
 	//Getter e setter
 		public int getCilindri() {
-			return this.cilindri;
+			return this.cilindri;  
 		}
 		public void setCilindri(int cilindri) {
 			this.cilindri = cilindri;
